@@ -1,6 +1,6 @@
-import {DataTypes} from "sequelize";
-import {sequelize} from "./Connection";
-import Service from "./Service";
+const { sequelize } = require('./Connection');
+const { DataTypes } = require('sequelize');
+const { Service } = require('./Service');
 
 let Category = sequelize.define('category', {
     name: {
@@ -13,7 +13,7 @@ let Category = sequelize.define('category', {
         allowNull: false,
     }
 }, {
-    timestamps,
+    timestamps: false,
     freezeTableName: true
 });
 

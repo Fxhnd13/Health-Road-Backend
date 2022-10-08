@@ -1,8 +1,8 @@
-import {sequelize} from "./Connection";
-import {DataTypes} from "sequelize";
-import Service from "./Service";
-import ServiceRate from "./ServiceRate";
-import AmbulanceDriver from "./AmbulanceDriver";
+const { sequelize } = require('./Connection');
+const { DataTypes } = require('sequelize');
+const { Service } = require('./Service');
+const { ServiceRate } = require('./ServiceRate');
+const { AmbulanceDriver } = require('./AmbulanceDriver');
 
 let Hospital = sequelize.define('hospital',{
     user: {

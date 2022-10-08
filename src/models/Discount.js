@@ -1,5 +1,6 @@
-import { DataTypes } from "sequelize";
-import Service from "./Service";
+const { sequelize } = require('./Connection');
+const { DataTypes } = require('sequelize');
+const { Service } = require('./Service');
 
 let Discount = sequelize.define('discount', {
     percentage:{

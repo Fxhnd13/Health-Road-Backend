@@ -1,5 +1,5 @@
-import { DataTypes} from "sequelize";
-import {sequelize} from "./Connection";
+const { sequelize } = require('./Connection');
+const { DataTypes } = require('sequelize');
 
 let CreditCard = sequelize.define('credit_card', {
     card_number:{

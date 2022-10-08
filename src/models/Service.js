@@ -1,6 +1,6 @@
-import {sequelize} from "./Connection";
-import {DataTypes} from "sequelize";
-import ServiceRate from "./ServiceRate";
+const { sequelize } = require('./Connection');
+const { DataTypes } = require('sequelize');
+const { ServiceRate } = require('./ServiceRate');
 
 let Service = sequelize.define('service', {
     name: {

@@ -1,9 +1,9 @@
-import {sequelize} from "./Connection";
-import {DataTypes} from "sequelize";
-import AmbulanceDriver from "./AmbulanceDriver";
-import Hospital from "./Hospital";
-import Favorite from "./Favorite";
-import CreditCard from "./CreditCard";
+const { sequelize } = require('./Connection');
+const { DataTypes } = require('sequelize');
+const { AmbulanceDriver } = require('./AmbulanceDriver');
+const { Hospital } = require('./Hospital');
+const { Favorite } = require('./Favorite');
+const { CreditCard } = require('./CreditCard');
 
 let User = sequelize.define('user', {
     code:{
@@ -85,4 +85,4 @@ User.hasOne(CreditCard, {
     }
 });
 
-Module.exports = { User }
+module.exports = { User }
