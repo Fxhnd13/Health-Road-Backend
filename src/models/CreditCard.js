@@ -1,28 +1,35 @@
 const { sequelize } = require('./Connection');
-const { DataTypes } = require('sequelize');
+const { DataTypes} = require('sequelize');
+const { User } = require("./User");
 
-let CreditCard = sequelize.define('credit_card', {
-    card_number:{
-        type: DataTypes.CHAR(length =17),
-        allowNull: true,
+let CreditCard = sequelize.define('credit_card',{
+    id: {
         primaryKey: true,
-    },
-    expiration:{
-        allowNull: false,
-        type: DataTypes.DATEONLY
-    },
-    cvv:{
+        autoIncrement: true,
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: false
     },
-    holder:{
-        type: DataTypes.TEXT,
-        allowNull: true,
-        defaultValue: ''
+    expiration_month: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    expiration_year: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    id_user: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    card_number: {
+        type: DataTypes.STRING(length = 16),
+        allowNull: false
     }
-}, {
-    freezeTableName: true,
-    timestamps: false
+},{
+    timestamps: false,
+    freezeTableName: true
 });
+
+//CreditCard.belongsTo(User, {foreignKey: 'id_user'});
 
 module.exports = { CreditCard }

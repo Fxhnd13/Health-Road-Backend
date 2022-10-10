@@ -1,11 +1,12 @@
 const { sequelize } = require('./Connection');
-const { DataTypes } = require('sequelize');
+const { DataTypes} = require('sequelize');
+const { Worker } = require("./Worker");
 
-let Category = sequelize.define('category',{
+let UserType = sequelize.define('user_type',{
     id: {
         primaryKey: true,
-        allowNull: false,
         autoIncrement: true,
+        allowNull: false,
         type: DataTypes.INTEGER
     },
     name: {
@@ -13,7 +14,7 @@ let Category = sequelize.define('category',{
         allowNull: false
     },
     description: {
-        type: DataTypes.STRING(length = 150),
+        type: DataTypes.STRING(length = 120),
         allowNull: false
     }
 },{
@@ -21,4 +22,6 @@ let Category = sequelize.define('category',{
     freezeTableName: true
 });
 
-module.exports = { Category }
+//UserType.hasMany(Worker, {foreignKey: 'id_user_type'});
+
+module.exports = { UserType: UserType }

@@ -1,88 +1,64 @@
 const { sequelize } = require('./Connection');
 const { DataTypes } = require('sequelize');
-const { AmbulanceDriver } = require('./AmbulanceDriver');
-const { Hospital } = require('./Hospital');
-const { Favorite } = require('./Favorite');
-const { CreditCard } = require('./CreditCard');
+const { Worker } = require('./Worker');
+const { CreditCard } = require("./CreditCard");
 
-let User = sequelize.define('user', {
-    code:{
+let User = sequelize.define('user',{
+    id: {
+        primaryKey: true,
         type: DataTypes.INTEGER,
-        allowNull: true,
+        allowNull: false,
+        autoIncrement: true
+    },
+    dpi: {
+        type: DataTypes.STRING(length = 13),
+        unique: true,
+        allowNull: false
     },
     user: {
-        type: DataTypes.STRING(length = 40),
-        allowNull: false,
-        primaryKey: true,
+        type: DataTypes.STRING(length = 30),
+        unique: true,
+        allowNull: false
     },
     password: {
-        type: DataTypes.STRING(length = 50),
-        allowNull: false,
+        type: DataTypes.STRING(length = 300),
+        allowNull: false
     },
     name: {
-        type: DataTypes.STRING(length = 40),
-        allowNull: false,
+        type: DataTypes.STRING(length = 60),
+        allowNull: false
     },
     last_name: {
-        type: DataTypes.STRING(length = 40),
-        allowNull: true,
+        type: DataTypes.STRING(length = 60),
+        allowNull: false
+    },
+    id_user_type: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
     },
     profile_pic: {
         type: DataTypes.STRING(length = 50),
-        allowNull: true,
+        allowNull: true
     },
     email: {
         type: DataTypes.STRING(length = 50),
         allowNull: true,
     },
-    celphone: {
+    telephone: {
         type: DataTypes.INTEGER,
         allowNull:true
     },
-    rol: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
-    status:{
-        type:DataTypes.BOOLEAN,
-        defaultValue:true,
-    }
-}, {
-    freezeTableName: true,
-    timestamps: false
-});
-
-User.hasMany(AmbulanceDriver, {
-    onDelete: 'CASCADE',
-    foreignKey: {
-        name: 'user',
-        primaryKey: true,
+    is_active: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
         allowNull: false
     }
+},{
+    timestamps: false,
+    freezeTableName: true
 });
 
-User.hasMany(Hospital, {
-    onDelete: 'CASCADE',
-    foreignKey: {
-        name: 'user',
-        primaryKey: true,
-        allowNull: false
-    }
-});
-
-User.hasMany(Favorite, {
-    onDelete: 'CASCADE',
-    foreignKey: {
-        name: 'user',
-        allowNull: false
-    }
-});
-
-User.hasOne(CreditCard, {
-    onDelete: 'CASCADE',
-    foreignKey: {
-        name: 'user'
-    }
-});
+//User.hasMany(Worker, {foreignKey: 'id_user'});
+//User.hasMany(CreditCard, {foreignKey: 'id_credit_card'});
 
 module.exports = { User }

@@ -1,71 +1,46 @@
 const { sequelize } = require('./Connection');
-const { DataTypes } = require('sequelize');
-const { Service } = require('./Service');
-const { ServiceRate } = require('./ServiceRate');
-const { AmbulanceDriver } = require('./AmbulanceDriver');
+const { DataTypes} = require('sequelize');
+const { Worker } = require('./Worker');
 
-let Hospital = sequelize.define('hospital',{
-    user: {
-        type: DataTypes.TEXT,
+let MedicalCenter = sequelize.define('medical_center',{
+    id: {
+        primaryKey: true,
         allowNull: false,
-        primaryKey: true
+        autoIncrement: true,
+        type: DataTypes.INTEGER
     },
     name: {
-        type: DataTypes.TEXT,
-        allowNull: false
+        allowNull: false,
+        type: DataTypes.STRING(length = 30),
+        unique: true
     },
     direction: {
-        type: DataTypes.JSON,
-        allowNull: true
+        allowNull: true,
+        type: DataTypes.JSON
+    },
+    profile_pic: {
+        allowNull: true,
+        type: DataTypes.STRING(length = 50)
     },
     description: {
-        type: DataTypes.TEXT,
         allowNull: false,
+        type: DataTypes.TEXT
     },
-    payment_type: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
-        defaultValue:0
-    },
-    director_name: {
-        type: DataTypes.STRING(length = 50),
-        allowNull: true,
-    },
-    status: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false
-    },
-    photos: {
-        type:DataTypes.JSON
+    //payment_type
+    //email
+    //user
+    //director_name
+    //status -> is_active
+    is_active: {
+        allowNull: false,
+        defaultValue: true,
+        type: DataTypes.BOOLEAN
     }
 },{
     timestamps: false,
     freezeTableName: true
 });
 
-Hospital.hasMany(Service,{
-    onDelete: 'CASCADE',
-    foreignKey:{
-        name: 'hospital_user',
-        primaryKey: true
-    }
-});
+//MedicalCenter.hasMany(Worker,{foreignKey: 'id_hospital'});
 
-Hospital.hasMany(ServiceRate, {
-    onDelete: 'CASCADE',
-    foreignKey: {
-        name: 'hospital',
-        allowNull: false
-    }
-});
-
-Hospital.hasMany(AmbulanceDriver, {
-    onDelete: 'CASCADE',
-    foreignKey: {
-        allowNull: true,
-        defaultValue: null,
-        name: 'hospital_user'
-    }
-});
-
-module.exports = { Hospital }
+module.exports = { MedicalCenter }
