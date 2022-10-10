@@ -1,4 +1,4 @@
-const { loadDummyData, resetDatabase } = require("./src/models/DatabaseUtilities");
+const { loadDummyData } = require("./src/models/DatabaseUtilities");
 const cors = require('cors');
 const express = require('express');
 const {sequelize} = require("./src/models/Connection");
@@ -8,7 +8,7 @@ require('dotenv').config();
 const app = express();
 
 // Si está activada la sincronización, reinicia la base de datos y carga datos 'dummy'
-if(process.env.DB_SYNC){ sequelize.sync({ force: true }); loadDummyData(); }
+if(process.env.DB_SYNC==='1'){ sequelize.sync({ force: true }); loadDummyData(); }
 
 // Configuración básica de app
 app.use(cors());
