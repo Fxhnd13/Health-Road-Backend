@@ -1,8 +1,7 @@
-const { sequelize } = require('./Connection');
+const sequelize  = require('../Connection');
 const { DataTypes} = require('sequelize');
-const { User } = require("./User");
 
-let CreditCard = sequelize.define('credit_card',{
+const CreditCard = sequelize.define('credit_card',{
     id: {
         primaryKey: true,
         autoIncrement: true,
@@ -30,6 +29,4 @@ let CreditCard = sequelize.define('credit_card',{
     freezeTableName: true
 });
 
-//CreditCard.belongsTo(User, {foreignKey: 'id_user'});
-
-module.exports = { CreditCard }
+module.exports = CreditCard;

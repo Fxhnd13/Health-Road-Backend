@@ -1,8 +1,7 @@
-const { sequelize } = require('./Connection');
+const  sequelize  = require('../Connection');
 const { DataTypes} = require('sequelize');
-const { Worker } = require("./Worker");
 
-let UserType = sequelize.define('user_type',{
+const UserType = sequelize.define('user_type',{
     id: {
         primaryKey: true,
         autoIncrement: true,
@@ -22,6 +21,4 @@ let UserType = sequelize.define('user_type',{
     freezeTableName: true
 });
 
-//UserType.hasMany(Worker, {foreignKey: 'id_user_type'});
-
-module.exports = { UserType: UserType }
+module.exports =  UserType 

@@ -1,8 +1,7 @@
-const { sequelize } = require('./Connection');
-const { DataTypes} = require('sequelize');
-const { Worker } = require('./Worker');
+const sequelize = require('../Connection');
+const { DataTypes } = require('sequelize');
 
-let MedicalCenter = sequelize.define('medical_center',{
+const MedicalCenter = sequelize.define('medical_center', {
     id: {
         primaryKey: true,
         allowNull: false,
@@ -36,11 +35,9 @@ let MedicalCenter = sequelize.define('medical_center',{
         defaultValue: true,
         type: DataTypes.BOOLEAN
     }
-},{
+}, {
     timestamps: false,
     freezeTableName: true
 });
 
-//MedicalCenter.hasMany(Worker,{foreignKey: 'id_hospital'});
-
-module.exports = { MedicalCenter }
+module.exports = MedicalCenter;

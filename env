@@ -1,0 +1,7 @@
+DB_USER=doadmin
+DB_PASSWORD=AVNS_7VY223y38l88z-0cTL_
+DB_HOST=db-postgresql-nyc1-47388-do-user-11299688-0.b.db.ondigitalocean.com
+DB_PORT=25060
+DB_NAME=defaultdb
+DB_SSL_MODE=require
+DB_SYNC=0

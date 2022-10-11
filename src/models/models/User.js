@@ -1,9 +1,7 @@
-const { sequelize } = require('./Connection');
+const sequelize = require('../Connection');
 const { DataTypes } = require('sequelize');
-const { Worker } = require('./Worker');
-const { CreditCard } = require("./CreditCard");
 
-let User = sequelize.define('user',{
+const User = sequelize.define('user',{
     id: {
         primaryKey: true,
         type: DataTypes.INTEGER,
@@ -58,7 +56,4 @@ let User = sequelize.define('user',{
     freezeTableName: true
 });
 
-//User.hasMany(Worker, {foreignKey: 'id_user'});
-//User.hasMany(CreditCard, {foreignKey: 'id_credit_card'});
-
-module.exports = { User }
+module.exports =  User;

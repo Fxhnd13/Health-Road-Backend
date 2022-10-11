@@ -1,7 +1,7 @@
-const { sequelize } = require('./Connection');
+const  sequelize  = require('../Connection');
 const { DataTypes } = require('sequelize');
 
-let Category = sequelize.define('category',{
+const Category = sequelize.define('category',{
     id: {
         primaryKey: true,
         allowNull: false,
@@ -21,4 +21,4 @@ let Category = sequelize.define('category',{
     freezeTableName: true
 });
 
-module.exports = { Category }
+module.exports =  Category ;
