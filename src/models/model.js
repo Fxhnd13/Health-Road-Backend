@@ -9,7 +9,7 @@ const Discount = require('./models/Discount');
 const Service = require('./models/Service');
 
 //User 1:M CreditCard
-User.hasMany(CreditCard, {foreignKey: 'id_credit_card'});
+User.hasMany(CreditCard, {foreignKey: 'id_user'});
 CreditCard.belongsTo(User, {foreignKey: 'id_user'});
 
 //MedicalCenter 1:M Worker 
