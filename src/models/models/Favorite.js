@@ -1,7 +1,7 @@
 const  sequelize  = require('../Connection');
 const { DataTypes } = require('sequelize');
 
-const Favorites = sequelize.define('favorites',{
+const Favorite = sequelize.define('favorite',{
     id_user: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -19,4 +19,4 @@ const Favorites = sequelize.define('favorites',{
     freezeTableName: true
 });
 
-module.exports =  Favorites ;
+module.exports =  Favorite ;

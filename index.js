@@ -2,15 +2,12 @@
 const express = require('express');
 
 //DB
-const { loadDummyData } = require("./src/utils/DatabaseUtils");
-const sequelize = require('./src/models/Connection');
-require('./src/models/model');
+const { confDatabase } = require("./src/utils/DatabaseUtils");
 
 //Rutas
 const { routes } = require('./src/routes/MainRoutes');
 
 // Utilidades necesarias para la configuración
-require('dotenv').config();
 const app = express();
 
 //CORS
@@ -29,11 +26,6 @@ app.use('/api/v1', routes);
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
+    confDatabase();
     console.log(`Server is running on port ${PORT}.`);
-  
-      sequelize.sync({ force: false }).then(() => { //Cambiar a true para que la db se actualice (si se hicieron modificaciones o no se ha creado) sino dejar en false
-        console.log("Conexion establecida");
-      }).catch(error => {
-        console.log("Se ha producido un error al momento de intentar conectar c>");
-      })
 });
