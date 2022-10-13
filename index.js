@@ -5,7 +5,7 @@ const express = require('express');
 const { confDatabase } = require("./src/utils/DatabaseUtils");
 
 //Rutas
-const { routes } = require('./src/routes/MainRoutes');
+const { routes } = require('./src/routes/MainR');
 
 // Utilidades necesarias para la configuración
 const app = express();
@@ -17,9 +17,11 @@ app.use((req, res, next) => {
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
     res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
     next();
-  });
+});
 
 // Configuración básica de app
+app.use(express.json());
+app.use(express.urlencoded({extended: false }));
 app.use('/api/v1', routes);
 
 //Puerto
